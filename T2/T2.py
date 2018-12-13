@@ -104,8 +104,11 @@ def GA(function, dimension, pop_size, numberOfBits, a, b, g_limit, crossover_pro
 
     results = [rastrigin(i) if function == 1 else griewank(i) if function == 2 else rosenbrock(i) if function == 3 else sixhump(i) for i in vReal]
     #print(results)
-    print(min(results))
-    print(vReal[results.index(min(results))])
+
+
+    #print(min(results))
+    return min(results)
+    #print(vReal[results.index(min(results))])
 
 
 # Rastrigin - 1
@@ -113,8 +116,8 @@ def GA(function, dimension, pop_size, numberOfBits, a, b, g_limit, crossover_pro
 # Rosenbrock - 3
 # Six-hump camel back - 4
 
-function = 4
-dimension = 5
+function = 1
+dimension = 30
 
 precision = 8
 if function==4: dimension = 2
@@ -140,4 +143,8 @@ mutation_prob = 0.05
 g_limit = 10**2
 pop_size = 300
 
-GA(function, dimension, pop_size, numberOfBits, a, b, g_limit, crossover_prob, mutation_prob)
+results = list()
+for repeta in range(15):
+    results += [GA(function, dimension, pop_size, numberOfBits, a, b, g_limit, crossover_prob, mutation_prob)]
+
+print(min(results), max(results), sum(results)/len(results))
