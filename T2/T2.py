@@ -106,7 +106,7 @@ def GA(function, dimension, pop_size, numberOfBits, a, b, g_limit, crossover_pro
     #print(results)
 
 
-    #print(min(results))
+    print(min(results))
     return min(results)
     #print(vReal[results.index(min(results))])
 
@@ -116,7 +116,7 @@ def GA(function, dimension, pop_size, numberOfBits, a, b, g_limit, crossover_pro
 # Rosenbrock - 3
 # Six-hump camel back - 4
 
-function = 1
+function = 3
 dimension = 30
 
 precision = 8
@@ -140,11 +140,13 @@ else:
 crossover_prob = 0.8
 mutation_prob = 0.05
 
-g_limit = 10**2
-pop_size = 300
+g_limit = 5000
+pop_size = 140
 
 results = list()
 for repeta in range(15):
     results += [GA(function, dimension, pop_size, numberOfBits, a, b, g_limit, crossover_prob, mutation_prob)]
 
-print(min(results), max(results), sum(results)/len(results))
+print(min(results))
+print(max(results))
+print(sum(results)/len(results))
